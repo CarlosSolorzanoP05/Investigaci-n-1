@@ -1116,3 +1116,4 @@ funcion Operacion_com_Cadenas_y_Arreglo
 		De Otro Modo:
 			Escribir "Ejercico no existente"
 	FinSegun
+FinFuncion
