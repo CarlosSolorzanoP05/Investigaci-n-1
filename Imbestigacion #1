@@ -1,0 +1,1118 @@
+Funcion crear_menu(opciones)
+	opciones[0]="1) Operaciones con Numeros"
+	opciones[1]="2) Operaciones con Cadenas y Arreglos"
+	opciones[2]="3) Salir"
+FinFuncion
+Funcion opc=presentar_menu(opciones,lim,titulo)
+	definir pos Como Entero
+	definir opc Como Caracter
+	Escribir titulo
+	Para pos<-0 Hasta lim Con Paso 1 Hacer
+		Escribir opciones[pos]
+	Fin Para
+	Escribir "Elija opcion[1...",lim+1,"]:"
+	leer opc
+FinFuncion
+Algoritmo principal
+	definir opciones,opcion1,car Como Caracter
+	dimension opciones[10]
+	opcion1=""
+	crear_menu(opciones)
+	Mientras opcion1 <> "3" Hacer
+		Borrar Pantalla
+		opcion1=presentar_menu(opciones,2,"Menu Principal")
+		Borrar Pantalla
+		Segun opcion1 Hacer
+			"1":
+				Escribir "Operaciones con Numeros"
+				Operacion_con_numeros
+			"2":
+				Escribir "Operaciones con Cadenas y Arreglos"
+				Operacion_com_Cadenas_y_Arreglo
+				
+			"3":
+				Escribir "Salir del Sistema"
+				
+			De Otro Modo:
+				Escribir "Opcion no valida"
+		Fin Segun
+		Esperar 3 Segundos
+    Fin Mientras
+	Escribir "Gracias por usar el Sistema..."
+FinAlgoritmo
+Función Ejercicio_1
+Escribir "*** Ejercicio 1 ***"
+Definir colas, total, poriva, iva, porpre, pre, poriv Como Real
+Escribir 'Ingrese la cantidad de colas' // definir las variables
+Leer colas// ingresar las variables
+Si colas>23 Entonces // el proseso del ejercicio
+	Escribir 'El costo por cola es de 0.50$'
+	Escribir 'Se le aplicara el 12% iva'
+	colas <- colas*0.50
+	poriv <- colas*0.12
+	iva <- colas+poriv
+	total <- colas+iva
+	Escribir 'el total sin iva es: ', colas, '$'// el resultado del ejercicio
+	Escribir 'El con el iva es de: ', iva, '$' // el resultado del ejercicio
+	Escribir 'El total a pagar es: ', total, '$' // el resultado del ejercicio
+SiNo // el resultado
+	Escribir 'El costo por cola es del 0.50$ mas 20%'
+	Escribir 'Sele aplicra el 12% del iva'
+	colas <- colas*0.50
+	porpre <- colas*0.20
+	pre <- colas+porpre
+	poriv <- pre*0.12
+	iva <- pre+poriv
+	total <- pre+iva
+	Escribir 'el total sin iva es: ', pre, '$'// el resultado del ejercicio
+	Escribir 'El con el iva es de: ', iva, '$' // el resultado del ejercicio
+	Escribir 'El total a pagar es: ', total, '$' // el resultado del ejercicio
+FinSi // el resultado
+FinFunción
+Función Ejercicio_2
+Escribir "*** Ejercicio 2 ***"
+Definir TAMANO, cantidad Como Entero// definir las valores
+Definir total, rebaja Como Real // definir las valores
+Definir uva, tipoa, tipob Como Cadena// definir las valores
+Escribir 'Ingrese el tipo de uva, el tamaño y la cantidad' 
+Escribir "tipo a o tipo b"
+Leer uva, TAMANO, cantidad// ingresar los valores
+tipoa <- 'tipo a' 
+tipob <- 'tipo b'
+Si uva=tipoa Y TAMANO=1 Entonces// El proseso del ejercicio
+	Escribir 'La uva es Tipo A tamaño 1' 
+	Escribir 'El precio es de 20$'
+	total <- cantidad*20
+	Escribir 'El total de precio es de: ', total, '$'// el resultado del ejercicio
+SiNo 
+	Si uva=tipoa Y TAMANO=2 Entonces
+		Escribir 'la uva es Tipo A tamaño 2'
+		Escribir 'El precio es de 30$'
+		total <- cantidad*30
+		Escribir 'El total de precio es de: ', total, '$'// el resultado del ejercicio
+	SiNo // el resultado
+		Si uva=tipob Y TAMANO=1 Entonces
+			Escribir 'La uva es tipo B tamaño 1'
+			Escribir 'se rebaja un 30$'
+			total <- cantidad*0.30
+			rebaja <- cantidad-total
+			Escribir 'El total de precio es de: ', rebaja, '$'// el resultado del ejercicio
+		SiNo // el resultado
+			Escribir 'La uva es tipo B tamaño 2'
+			Escribir 'se rebaja un 50$'
+			total <- cantidad*0.50
+			rebaja <- cantidad-total
+			Escribir 'El total de precio es de: ', rebaja, '$'// el resultado del ejercicio
+		FinSi
+	FinSi
+FinSi
+FinFunción
+Función Ejercicio_3
+Escribir "*** Ejercicio 3 ***"
+Definir dividendo, divisor, residuo Como Entero // definir las variables
+Escribir 'Ingrese el dividendo: '
+Leer dividendo// ingresar variavles
+Escribir 'Ingrese el divisor: '
+Leer divisor
+residuo <- dividendo
+Mientras residuo>=divisor Hacer// el Proceso del ejercicio
+	residuo <- residuo-divisor
+FinMientras
+Escribir 'El residuo es: ', residuo // el resultado del ejercicio
+FinFunción
+Función Ejercicio_4
+Escribir "*** Ejercicio 4 ***"
+Definir numCita, costoCita, totalPago, citaActual Como Entero// definir los valores
+Escribir 'Ingrese el número de cita: '
+Leer numCita// inresar el valor
+citaActual <- 1
+totalPago <- 0
+Mientras citaActual<=numCita Hacer// el proseso del ejercicio
+	Si citaActual<=3 Entonces
+		costoCita <- 200
+	SiNo
+		Si citaActual<=5 Entonces
+			costoCita <- 150
+		SiNo
+			Si citaActual<=8 Entonces
+				costoCita <- 100
+			SiNo
+				costoCita <- 50
+			FinSi
+		FinSi
+	FinSi
+	totalPago <- totalPago+costoCita
+	Escribir 'Cita ', citaActual, ' - Costo: $', costoCita // el resultado del ejercicio
+	citaActual <- citaActual+1
+FinMientras
+Escribir 'El costo total de las citas es: $', totalPago// el resultado del ejercicio
+FinFunción
+Función Ejercicio_5
+Escribir "*** Ejercicio 5 ***"
+Definir num1, num2, num3, num4 Como Entero// definir valores
+Escribir 'Ingrese el primer número: '
+Leer num1// ingresar los valores
+Escribir 'Ingrese el segundo número: '
+Leer num2
+Escribir 'Ingrese el tercer número: '
+Leer num3
+Escribir 'Ingrese el cuarto número: '
+Leer num4
+Si num2=2*num1 Entonces// El proseso del ejercicio
+	Escribir num1, ' es la mitad de ', num2// el resultado del ejercicio
+SiNo
+	Escribir num1, ' no es la mitad de ', num2// el resultado del ejercicio
+FinSi
+Si num4 MOD num3=0 Entonces
+	Escribir num3, ' es divisor de ', num4// el resultado del ejercicio
+SiNo
+	Escribir num3, ' no es divisor de ', num4// el resultado del ejercicio
+FinSi 
+FinFunción
+Función Ejercicio_6
+Escribir "*** Ejercicio 6 ***"
+Definir targeta, tipo1, tipo2, tipo3 Como Cadena// definir las variables
+Escribir 'Ingrese que tipo de tarjeta' 
+Escribir 'tipo 1 , tipo 2 , tipo 3'
+Leer targeta// ingresar las variables
+tipo1 <- 'tipo 1' 
+tipo2 <- 'tipo 2'
+tipo3 <- 'tipo 3'
+Si targeta=tipo1 Entonces// el proseso del ejercicio
+	Escribir ' optiene un aumento del 25%' // el Resultado del ejercicio
+SiNo 
+	Si targeta=tipo2 Entonces
+		Escribir 'Optiene un aumento del 35%'// el Resultado del ejercicio
+	SiNo 
+		Si targeta=tipo3 Entonces
+			Escribir 'Optiene un aumento del 40%'// el Resultado del ejercicio
+		SiNo 
+			Escribir 'Optiene un aumento del 50%'// el Resultado del ejercicio
+		FinSi 
+	FinSi
+FinSi
+FinFunción
+Función Ejercicio_7
+Escribir "*** Ejercicio 7 ***"
+Definir num1, num2, num3, num4 Como Entero // ingresar los valores
+Escribir 'Ingrese el primer número: '
+Leer num1// Ingrear los valores
+Escribir 'Ingrese el segundo número: '
+Leer num2// Ingrear los valores
+Escribir 'Ingrese el tercer número: '
+Leer num3// Ingrear los valores
+Escribir 'Ingrese el cuarto número: '
+Leer num4// Ingrear los valores
+Si num3 MOD num1=0 Entonces// El proseso del ejercicio
+	Escribir num1, ' es divisor de ', num3// El resultado del ejercicio
+SiNo
+	Escribir num1, ' no es divisor de ', num3// El resultado del ejercicio
+FinSi
+Si num2=2*num4 Entonces
+	Escribir num2, ' es el doble de ', num4// El resultado del ejercicio
+SiNo
+	Escribir num2, ' no es el doble de ', num4// El resultado del ejercicio
+FinSi
+FinFunción
+Función Ejercicio_8
+Escribir "*** Ejercicio 8 ***"
+Definir tipoTarjeta, aumento, limiteCredito, nuevoLimite Como Real// definir variables
+Escribir 'Ingrese el tipo de tarjeta (1, 2, 3 u otro): '
+Leer tipoTarjeta// Ingresar valores
+Si tipoTarjeta=1 Entonces// El proseso del ejercicio
+	aumento <- 100
+SiNo
+	Si tipoTarjeta=2 Entonces
+		aumento <- 200
+	SiNo
+		Si tipoTarjeta=3 Entonces
+			aumento <- 300
+		SiNo
+			aumento <- 500
+		FinSi
+	FinSi
+FinSi
+limiteCredito <- 1000
+nuevoLimite <- limiteCredito+aumento // Supongamos un límite de crédito inicial de $1000
+nuevoLimite <- nuevoLimite+(0.10*nuevoLimite)
+Escribir 'El nuevo límite de crédito es: $', nuevoLimite // Aumento del 10 MOD y el Resultado del ejercicio
+FinFunción
+Función Ejercicio_9
+Escribir "*** Ejercicio 9 ***"
+Definir numero Como Entero //Definir los valores
+Escribir 'Ingrese un número: '
+Leer numero// ingresar los valores
+Si numero<-20 Y numero<0 Entonces // El proseso del ejercicio
+	Escribir 'El número es negativo y menor que -20.'
+SiNo
+	Si numero>0 Entonces
+		Si numero MOD 2=0 Entonces
+			Escribir 'El número es positivo, par y'
+			Si numero MOD 7=0 Entonces
+				Escribir 'múltiplo de 7.'// El resultado del ejercicio
+			SiNo
+				Escribir 'no es múltiplo de 7.' // El resultado del ejercicio
+			FinSi
+		SiNo
+			Escribir 'El número es positivo, impar y'
+			Si numero MOD 7=0 Entonces
+				Escribir 'múltiplo de 7.' // El resultado del ejercicio
+			SiNo
+				Escribir 'no es múltiplo de 7.' // El resultado del ejercicio
+			FinSi
+		FinSi
+	FinSi
+FinSi
+FinFunción
+Función Ejercicio_10
+Escribir "*** Ejercicio 10 ***"
+Definir TAMANOPITAJAYA, precioInicial, precioFinal Como Real // definir los valores 
+Definir a, tipoPitajaya, b Como Cadena
+a <- 'Amarilla'
+b <- 'Colorada'
+Escribir 'Ingrese el tipo de pitajaya (Amarilla o Colorada): '
+Leer tipoPitajaya// ingrese los valores
+Escribir 'Ingrese el tamaño de pitajaya (1 o 2): '
+Leer TAMANOPITAJAYA
+Si tipoPitajaya=a Entonces
+	precioInicial <- 100
+	Si TAMANOPITAJAYA=1 Entonces // Precio inicial para pitajaya amarilla y El proseso del ejercicio
+		precioFinal <- precioInicial+10
+	SiNo // Se le suman $10 al precio inicial
+		precioFinal <- precioInicial+(0.15*precioInicial)+5
+	FinSi // Se le suma el 15 MOD  y $5 al precio inicial
+SiNo
+	Si tipoPitajaya=b Entonces
+		precioInicial <- 100
+		Si TAMANOPITAJAYA=1 Entonces // Precio inicial para pitajaya colorada
+			precioFinal <- precioInicial-20
+		SiNo // Se le restan $20 al precio inicial
+			precioFinal <- precioInicial-(0.20*precioInicial)
+		FinSi // Se le resta el 20 MOD  al precio inicial
+	FinSi
+FinSi
+// Aplicar descuento del 5 MOD  y el 12 MOD  de IVA
+precioFinal <- precioFinal-(0.05*precioFinal)
+precioFinal <- precioFinal+(0.12*precioFinal)
+Escribir 'El precio de embarque de la pitajaya es: $', precioFinal// Resultado del ejercicio
+FinFunción
+Función Ejercicio_11
+Escribir "*** Ejercicio 11 ***"
+Definir numero Como Entero // definir los valores
+Escribir 'Ingrese un número: '
+Leer numero// ingresar los valores
+Si numero MOD 2=0 Y numero<10 Entonces// proseso del ejercicio
+	Escribir 'El número es par y menor que 10.'// Resultado del ejercicio
+SiNo
+	Si numero<0 Y numero MOD 2<>0 Entonces
+		Escribir 'El número es negativo e impar.'// Resultado del ejercicio
+	SiNo
+		Si numero<0 Y numero MOD 5=0 Entonces
+			Escribir 'El número es negativo y divisible por 5.' // Resultado del ejercicio
+		SiNo
+			Escribir 'El número no cumple ninguna de las condiciones especificadas.'// Resultado del ejercicio
+		FinSi
+	FinSi
+FinSi
+FinFunción
+Función Ejercicio_12
+Escribir "*** Ejercicio 12 ***"
+Definir clave, costoMateriaPrima, costoManoDeObra, costoGastosFabricacion, costoProduccion, precioVenta Como Real // definir los valores
+Escribir 'Ingrese la clave del artículo (1, 2, 3, 4, 5 o 6): '
+Leer clave // El ingreso de los valores
+Escribir 'Ingrese el costo de la materia prima: '
+Leer costoMateriaPrima
+// Calcular costo de la mano de obra
+Si clave=3 O clave=4 Entonces // el proseso del ejercicio
+	costoManoDeObra <- 0.75*costoMateriaPrima
+SiNo
+	Si clave=1 O clave=5 Entonces
+		costoManoDeObra <- 0.80*costoMateriaPrima
+	SiNo
+		costoManoDeObra <- 0.85*costoMateriaPrima
+	FinSi
+FinSi
+// Calcular costo de gastos de fabricación
+Si clave=2 O clave=5 Entonces
+	costoGastosFabricacion <- 0.30*costoMateriaPrima
+SiNo
+	Si clave=3 O clave=6 Entonces
+		costoGastosFabricacion <- 0.35*costoMateriaPrima
+	SiNo
+		costoGastosFabricacion <- 0.28*costoMateriaPrima
+	FinSi
+FinSi
+// Calcular costo de producción
+costoProduccion <- costoMateriaPrima+costoManoDeObra+costoGastosFabricacion
+// Calcular precio de venta
+precioVenta <- costoProduccion+(0.45*costoProduccion)
+Escribir 'El precio de venta del artículo es: $', precioVenta// El resultado 
+FinFunción
+Función Ejercicio_13
+Escribir "*** Ejercicio 13 ***"
+Definir numero, contador Como Real// Definir los valores
+Escribir 'Ingrese un número entero: '
+Leer numero// Ingresar valores
+contador <- 0
+Mientras numero>=1 Hacer// Proseso del ejercicio
+	numero <- trunc(numero/10)
+	contador <- contador+1
+FinMientras
+Escribir 'El número tiene ', contador, ' dígitos.' // Resultado del ejercicio
+FinFunción
+Función Ejercicio_14
+Escribir "*** Ejercicio 14 ***"
+Definir n, a, b Como Entero // definir los valores
+Escribir 'Ingrese un numero con 5 digitos'
+Leer n // Ingresar valores
+a <- trunc(n/100)
+b <- n MOD 10
+Si a==b Entonces// Proseso del ejercicio
+	Escribir 'El numero ', n, ' es un numero capicua' //Resultado del ejercicio
+SiNo
+	Escribir 'El numero ', n, ' no es un numero capicua'// Resultado del ejercicio
+FinSi
+FinFunción
+funcion c=divisores(n,x,c)
+	definir divisor Como Entero
+	Mientras x<=n Hacer // Proseso del ejercicio
+		Si n MOD x=0 Entonces
+			Escribir 'El numero ', x, ' es divisible entre ', n // Resultado del ejercicio
+			c=c+1
+		FinSi
+		x <-x+1
+	FinMientras
+FinFuncion
+Función Ejercicio_15
+Escribir "*** Ejercicio 15 ***"
+Definir n,x,c Como Entero // Definir valrores
+Escribir 'Ingrese un numero'
+Leer n// Ingresar valores
+x <- 1
+c=0
+c=divisores(n,x,c)
+FinFunción
+Función Ejercicio_16
+Escribir "*** Ejercicio 16 ***"
+Definir n,x,divisor Como Entero // Definir valrores
+Escribir 'Ingrese un numero'
+Leer n// Ingresar valores
+x <- 0
+para divisor<-1 Hasta n Hacer
+	si n mod divisor=0 Entonces
+		x=x+divisor
+	FinSi
+FinPara
+Escribir 'La suma de los divisores de ', n , ' es: ', x // Resultado del ejercicio
+FinFunción
+Función Ejercicio_17
+Escribir "*** Ejercicio 17 ***"
+Definir n, x, f,c Como Entero// Definir los valores
+Escribir 'Ingrese un numero'
+Leer n// Ingresar los valores
+x <- 1
+f <- 0
+c=0
+c=divisores(n,x,c)
+Escribir 'La cantidad de los divisores ', n, ' es: ', c//Resultado del ejercicio
+FinFunción
+Función Ejercicio_18
+Escribir "*** Ejercicio 18 ***"
+Definir x, n, perfecto Como Entero// Definir los valores
+Escribir 'Ingrese un numero'
+Leer n// Ingresar valores
+perfecto <- 0
+x <- 2
+Mientras x<=n Hacer // Proceso del ejercicio
+	Si n MOD x==0 Entonces
+		perfecto <- perfecto+(n/x)
+	FinSi
+	x <- x+1
+FinMientras
+Si perfecto==n Entonces
+	Escribir 'El numero ', n, ' es perfecto'// Resultado del ejercicio
+SiNo
+	Escribir 'El numero ', n, ' no es perfecto'// Resultado del Ejercicio
+FinSi
+FinFunción
+funcion Ejercicio_19
+	Escribir "*** Ejercicio 19 ***"
+	definir x,n,contador Como Entero// Definir los valores
+	Escribir "Ingrese un numero"
+	leer n// Ingresar valores
+	x=1
+	contador=0
+	mientras x<=n Hacer// Proceso del ejercicio
+		si n mod x=0 Entonces
+			contador=contador+1
+		FinSi
+		x=x+1
+	FinMientras
+	si contador=2 Entonces
+		Escribir "El numero " n " es primo"// Resultado del ejercicio
+	sino 
+		Escribir "El numero " n " no es primo"// Resultado del ejercicio
+	FinSi
+FinFuncion
+funcion Ejercicio_20
+	Escribir "*** Ejercicio 20 ***"
+	definir x,f,n1,n2,contador1,contador2 Como Entero// Definir los valores
+	Escribir "Ingrese un numero"
+	leer n1// Ingresar valores
+	x=1
+	contador1=0
+	mientras x<=n1 Hacer// Proceso del ejercicio
+		si n1 mod x=0 Entonces
+			contador1=contador1+1
+		FinSi
+		x=x+1
+	FinMientras
+	Escribir "Ingrese un segundo numero"
+	leer n2
+	contador2=0
+	f=1
+	mientras f <= n2 Hacer
+		si n2 mod f=0 Entonces
+			contador2=contador2+1
+		FinSi
+		f=f+1
+	FinMientras
+	si contador1=2 Entonces
+		Escribir "El numero " n1 " es primo"// Resultado del ejercicio
+	sino 
+		Escribir "El numero " n1 " no es primo"// Resultado del ejercicio
+	FinSi
+	si contador2=2 Entonces
+		Escribir "El numero " n2 " es primo"// Resultado del ejercicio
+	sino 
+		Escribir "El numero " n2 " no es primo"// Resultado del ejercicio
+	FinSi
+	si contador1=contador2 Entonces
+		Escribir "Los numeros " n1 " y " n2 " son primos gemelos "// Resultado del ejercicio
+	SiNo
+		Escribir "Los numeros " n1 " y " n2 " no son primos gemelos "// Resultado del ejercicio
+	FinSi
+FinFuncion
+Funcion Ejercicio_21
+	Escribir "*** Ejercicio 21 ***"
+	Definir n1,n2,x,f,z,c Como Entero// Definir Valores
+	Escribir 'Ingrese un numero'
+	Leer n1// Ingresar valores
+	x <- 1
+	f <- 0
+	Mientras x<=n1 Hacer// Proseso del ejercicio
+		Si n1 MOD x=0 Entonces
+			f <- f+1
+		FinSi
+		x <- x+1
+	FinMientras
+	Escribir 'La cantidad de los divisores ', n1, ' es: ', f// Resultado del ejercicio
+	Escribir 'Ingrese un numero'
+	Leer n2
+	z <- 1
+	c <- 0
+	Mientras z<=n2 Hacer
+		Si n2 MOD z=0 Entonces
+			c <- c+1
+		FinSi
+		z <- z+1
+	FinMientras
+	Escribir 'La cantidad de los divisores ', n2, ' es: ', c// Resultado del ejercicio
+	si f=c Entonces
+		Escribir "Los numeros " n1 " y " n2 " Son primos amigos"// Resultado del ejercicio
+	SiNo
+		Escribir  "Los numeros " n1 " y " n2 " No son primos amigos"// Resultado del ejercicio
+	FinSi
+FinFuncion
+Función Operacion_con_numeros
+definir num1 Como Entero
+Escribir "Ingrese el numero del ejercicio (1-21)"
+leer num1
+segun num1 Hacer
+		1:
+		Ejercicio_1
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		2:
+		Ejercicio_2
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		3:
+		Ejercicio_3
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		4:
+		Ejercicio_4
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		5:
+		Ejercicio_5
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		6:
+		Ejercicio_6
+		Esperar 3 Segundos
+		Limpiar Pantalla
+	7:
+		Ejercicio_7
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		8:
+		Ejercicio_8
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		9:
+		Ejercicio_9
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		10:
+		Ejercicio_10
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		11:
+		Ejercicio_11
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		12:
+		Ejercicio_12
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		13:
+		Ejercicio_13
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		14:
+		Ejercicio_14
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		15:
+		Ejercicio_15
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		16:
+		Ejercicio_16
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		17:
+		Ejercicio_17
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		18:
+		Ejercicio_18
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		19:
+		Ejercicio_19
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		20:
+		Ejercicio_20
+		Esperar 3 Segundos
+		Limpiar Pantalla
+		21:
+		Ejercicio_21
+		Esperar 3 Segundos
+	De Otro Modo:
+		Escribir "Ejercicio no existente"
+		Esperar 3 Segundos
+		Limpiar Pantalla
+FinSegun
+FinFunción
+Funcion EjercicoCA1
+	Escribir "*** Ejercico 1 *** "
+	Definir n,i, num1,num2,resultado,mult,suma Como real // definir los valoes
+    Escribir "Ingrese el valor de n:"
+    Leer n// ingresar valores
+	Escribir "Ingrese dos numeros"
+	leer num1,num2
+	suma=num1+num2
+	resultado=suma
+	Para i=1 Hasta n Hacer// proseso del Ejercico 
+		si n>i Entonces
+			Escribir resultado// el 3ser valor de n y el resultado 
+			mult=resultado*num2
+			Escribir mult// el 4to valor n y el resultado
+			resultado=mult*resultado
+		FinSi
+		i=i+1
+	FinPara
+FinFuncion//fin
+Funcion EjercicoCA2
+	Escribir "*** Ejercico 2 *** "
+	Definir arreglo Como Entero // Definir los valores
+    Definir arregloPares, arregloImpares Como Real
+    Definir n, i Como Entero
+    Definir sumaPares, sumaImpares Como Real
+    Definir contPares, contImpares Como Entero
+	Dimension arreglo[100]; Dimension arregloPares[100]; Dimension arregloImpares[100] // Puedes ajustar el tamaño del arreglo según tus necesidades
+    Escribir "Ingrese la cantidad de elementos del arreglo:"
+    Leer n// ingresar valor 
+    Escribir "Ingrese los elementos del arreglo:"
+    Para i = 1 Hasta n Hacer// proseso del ejercico
+        Leer arreglo[i]
+    FinPara
+    sumaPares = 0
+    sumaImpares = 0
+    contPares = 0
+    contImpares = 0
+    Para i = 1 Hasta n Hacer
+        Si arreglo[i] Mod 2 = 0 Entonces
+            sumaPares = sumaPares + arreglo[i]
+            contPares = contPares + 1
+        Sino
+            sumaImpares = sumaImpares + arreglo[i]
+            contImpares = contImpares + 1
+        FinSi
+    FinPara
+    Si contPares > 0 Entonces
+        arregloPares[1] = sumaPares / contPares
+    Sino
+        arregloPares[1] = 0
+    FinSi
+    Si contImpares > 0 Entonces
+        arregloImpares[1] = sumaImpares / contImpares
+    Sino
+        arregloImpares[1] = 0
+    FinSi
+    Escribir "Arreglo de promedios de números pares: [", arregloPares[1], "]"// resultado del Ejercicio
+    Escribir "Arreglo de promedios de números impares: [", arregloImpares[1], "]"// Resultado del Ejercicio
+FinFuncion//fin
+Funcion EjercicoCA3
+	Escribir "*** Ejercico 3 *** "
+	Definir n,i,num,num2,res Como Entero// definir valores
+    Escribir "Ingrese un número n:"
+    Leer n// ingresar valores
+	Escribir "Ingrese dos numero"
+	Leer num,num2
+    res=num2-num
+	para i=1 Hasta n Hacer// proseso del ejercicio
+		Escribir res// resultado del ejercicio
+		res=res-num
+	FinPara
+FinFuncion//fin
+Funcion EjercicoCA4
+	Escribir "*** Ejercico 4 *** "
+	Definir arreglo Como Entero// definir valores
+    Definir arregloPositivo, arregloNegativo Como Entero
+    Definir i, j, k Como Entero
+	Dimension arreglo[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+	Dimension arregloPositivo[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+	Dimension arregloNegativo[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+    i = 0
+    j = 0
+    k = 0
+    Escribir "Ingrese los números del arreglo (termine con 0):"
+    Leer arreglo[i]// ingresar los valores
+    Mientras arreglo[i] <> 0 Hacer// prosesos
+        Si arreglo[i] > 0 Entonces
+            arregloPositivo[j] = arreglo[i]
+            j = j + 1
+        Sino
+            arregloNegativo[k] = arreglo[i]
+            k = k + 1
+        FinSi
+        i = i + 1
+        Leer arreglo[i]
+    FinMientras
+    Escribir "Arreglo original: ["// resultado
+    Para i = 0 Hasta i - 1 Hacer
+        Escribir arreglo[i]
+        Si i < j - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+    Escribir "Arreglo de números positivos: ["// resultado
+    Para i = 0 Hasta j - 1 Hacer
+        Escribir arregloPositivo[i]
+        Si i < j - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+    Escribir "Arreglo de números negativos: ["// resultado
+    Para i = 0 Hasta k - 1 Hacer
+        Escribir arregloNegativo[i]
+        Si i < k - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+FinFuncion// fin 
+Funcion EjercicoCA5
+	Escribir "*** Ejercico 5 *** "
+	Definir numero Como Entero
+    Definir paresSuma, contMultiplos3 Como Entero// definir ejercicio
+    paresSuma = 0
+    contMultiplos3 = 0
+    Escribir "Ingrese una secuencia de números (termine con un número negativo):"
+    Leer numero// ingresar valores
+    Mientras numero >= 0 Hacer// proseso
+        Si numero Mod 2 = 0 Entonces
+            paresSuma = paresSuma + numero
+        FinSi
+        Si numero Mod 3 = 0 Entonces
+            contMultiplos3 = contMultiplos3 + 1
+        FinSi
+        Escribir "Ingrese un número (termine con un número negativo):"
+        Leer numero
+    FinMientras
+    Escribir "Suma de los números pares: ", paresSuma// resultado
+    Escribir "Cantidad de números múltiplos de 3: ", contMultiplos3// resultado
+FinFuncion// fin
+Funcion EjercicoCA6 
+	Escribir "*** Ejercico 6 *** "
+	Definir numero Como Entero// definir los valores
+    Definir arreglo Como Entero  
+    Definir i,j, sumaCuadrados Como Entero
+	Dimension arreglo[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+    i = 0
+    sumaCuadrados = 0
+    Escribir "Ingrese una secuencia de números (termine con un 0):"
+    Leer numero// ingresar valores
+    Mientras numero <> 0 Hacer
+        arreglo[i] = numero
+        sumaCuadrados = sumaCuadrados + (numero ^ 2)  // Elevar al cuadrado y sumar al total
+        i = i + 1
+        Escribir "Ingrese un número (termine con un 0):"
+        Leer numero
+    FinMientras
+    Escribir "Arreglo de números: ["
+    Para j = 0 Hasta i - 1 Hacer
+        Escribir arreglo[j]
+        Si j < i - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+    Escribir "Suma de los cuadrados de los números: ", sumaCuadrados// resultado
+FinFuncion//fin
+funcion EjercicoCA7
+	Escribir "*** Ejercico 7 *** "
+	Definir numero Como Entero// definir valores
+    Definir contMay5, sumaMultiplos5 Como Entero
+    contMay5 = 0
+    sumaMultiplos5 = 0
+    Escribir "Ingrese una secuencia de números (termine con un número par):"
+    Leer numero// ingresar valores
+    Mientras numero Mod 2 <> 0 Hacer// proseso del Ejercicio
+        Si numero > 5 Entonces
+            contMay5 = contMay5 + 1
+        FinSi
+        Si numero Mod 5 = 0 Entonces
+            sumaMultiplos5 = sumaMultiplos5 + numero
+        FinSi
+        Escribir "Ingrese un número (termine con un número par):"
+        Leer numero
+    FinMientras
+    Escribir "Cantidad de números mayores a 5: ", contMay5// resultado
+    Escribir "Suma de los múltiplos de 5: ", sumaMultiplos5// resultado
+FinFuncion//fin
+Funcion EjercicoCA8
+	Escribir "*** Ejercico 8 *** "
+	Definir secuencia Como Entero//definir valores
+    Definir arreglo Como Entero 
+    Definir i,j Como Entero
+    Definir sumaCubos Como Entero
+	Dimension arreglo[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+    i = 0
+    sumaCubos = 0
+    Escribir "Ingrese una secuencia de números (termine con un número negativo):"
+    Leer secuencia// ingresar valores
+    Mientras secuencia >= 0 Hacer// proseso del ejercicio
+        arreglo[i] = secuencia
+        sumaCubos = sumaCubos + (secuencia ^ 3)  // Elevar al cubo y sumar al total
+        i = i + 1
+        Escribir "Ingrese un número (termine con un número negativo):"
+        Leer secuencia
+    FinMientras
+    Escribir "Arreglo de números: ["
+    Para j = 0 Hasta i - 1 Hacer
+        Escribir arreglo[j]
+        Si j < i - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+    Escribir "Suma de los números elevados al cubo: ", sumaCubos// resultado
+FinFuncion// fin
+Función EjercicoCA9
+Escribir "*** Ejercico 9 *** "
+Definir frase Como Cadena// drfinir valores
+Definir espacios, i, cantidad Como Entero
+espacios <- 0
+i <- 0
+cantidad <- 0
+Escribir 'Ingrese una frase'
+Leer frase// definir valores
+cantidad <- Longitud(frase)
+Para i<-0 Hasta cantidad-1 Con Paso 1 Hacer// proseso del ejercicio
+	Si subcadena(frase,i,i)=" " Entonces
+		espacios <- espacios+1
+	FinSi
+FinPara
+Escribir 'La frase tiene ', espacios+1, ' palabras ' // resultado del ejercicio
+FinFunción// fin
+Función EjercicoCA10
+Escribir "*** Ejercico 10 *** "
+Definir secuencia Como Entero// definir los valores
+Definir arreglo Como Entero
+Definir i, j Como Entero 
+Dimensionar arreglo(100)// Puedes ajustar el tamaño del arreglo según tus necesidades
+i <- 0
+Escribir 'Ingrese una secuencia de números (termine con un número negativo):'
+Leer secuencia// ingresar valores
+Mientras secuencia>=0 Hacer // proseso del Ejercicio
+	arreglo[i] <- secuencia*2
+	i <- i+1
+	Escribir 'Ingrese un número (termine con un número negativo):'
+	Leer secuencia
+FinMientras
+Escribir 'Arreglo resultante: ['// resultado
+Para j<-0 Hasta i-1 Hacer
+	Escribir arreglo[j]
+	Si j<i-1 Entonces
+		Escribir ', '
+	FinSi
+FinPara
+Escribir ']'
+FinFunción// fin
+Funcion EjercicoCA11
+	Escribir "*** Ejercico 11 ***"
+	Definir secuencia Como Caracter// definir valores
+    Definir contX Como Entero
+    contX = 0
+    Escribir "Ingrese una secuencia de caracteres (termine con un punto): "
+    Leer secuencia// ingresar valores
+    Mientras secuencia <> "." Hacer// proseso del ejercicio 
+        Si secuencia = "x" Entonces
+            contX = contX + 1
+        FinSi
+        Escribir "Ingrese un caracter (termine con un punto): "
+        Leer secuencia
+    FinMientras
+    Escribir "La cantidades de x ingresados es: ", contX// resultado
+FinFuncion// fin
+Funcion EjercicoCA12
+	Escribir "*** Ejercico 12 ***"
+	Definir secuencia Como Entero // definir los valores
+    Dimension  arreglo1[100]  // Puedes ajustar el tamaño del arreglo según tus necesidades
+    Dimension  arreglo2[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+    Definir i, j,arreglo1,arreglo2 Como Entero
+    i = 0
+    Escribir "Ingrese una secuencia de números (termine con un 0): "
+    Leer secuencia// ingresar valores
+    Mientras secuencia <> 0 Hacer// proseso del ejercicio
+        arreglo1[i] = secuencia
+        i = i + 1
+        Escribir "Ingrese un número (termine con un 0): "
+        Leer secuencia
+    FinMientras
+    j = 0
+    Para i = 0 Hasta i Hacer
+        Si arreglo1[i] Mod 2 = 0 Entonces
+            arreglo2[j] = arreglo1[i]
+            j = j + 1
+        FinSi
+    FinPara
+    Escribir "Arreglo1: ["// resultado
+    Para i = 0 Hasta i - 1 Hacer
+        Escribir arreglo1[i]
+        Si i < i - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+    Escribir "Arreglo2: ["// resultado
+    Para i = 0 Hasta j - 1 Hacer
+        Escribir arreglo2[i]
+        Si i < j - 1 Entonces
+            Escribir ", "
+        FinSi
+    FinPara
+    Escribir "]"
+FinFuncion// fin
+Funcion EjercicoCA13
+	Escribir "*** Ejercico 13 ***"
+	Definir numero1, numero2, i Como Entero// definir los valores
+    Escribir "Ingrese el primer número: "
+    Leer numero1// ingresar los valores
+    Escribir "Ingrese el segundo número: "
+    Leer numero2
+	i=0
+    Si numero1 <= numero2 Entonces// proseso del Ejercicio
+        Para i = numero1 Hasta numero2 Hacer
+            Si i >= 5 Entonces
+                Escribir i// resultado
+            FinSi
+        FinPara
+    Sino
+        Para i = numero1 Hasta numero2 Con Paso -1 Hacer
+            Si i >= 5 Entonces
+                Escribir i// resultado
+            FinSi
+        FinPara
+    FinSi
+FinFuncion// fin
+Funcion EjercicoCA14
+	Escribir "*** Ejercico 14 ***"
+	Definir Edades Como Entero// definir valores
+    Definir i, n, sumaEdades, cantMayorIgual18, cantMenor18 Como Entero
+    Definir promedioGeneral, promedioMayorIgual18, promedioMenor18 Como Real
+	Dimension edades[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+    i = 0
+    sumaEdades = 0
+    cantMayorIgual18 = 0
+    cantMenor18 = 0
+    Escribir "Ingrese la cantidad de edades: "
+    Leer n// ingresear valores
+    Para i = 0 Hasta n - 1 Hacer// proseso del Ejercicio
+        Escribir "Ingrese la edad del alumno ", i + 1, ": "
+        Leer Edades[i]
+        sumaEdades = sumaEdades + Edades[i]
+        Si Edades[i] >= 18 Entonces
+            cantMayorIgual18 = cantMayorIgual18 + 1
+        Sino
+            cantMenor18 = cantMenor18 + 1
+        FinSi
+    FinPara
+    promedioGeneral = sumaEdades / n
+    Si cantMayorIgual18 > 0 Entonces
+        promedioMayorIgual18 = sumaEdades / cantMayorIgual18
+    Sino
+        promedioMayorIgual18 = 0
+    FinSi
+    Si cantMenor18 > 0 Entonces
+        promedioMenor18 = sumaEdades / cantMenor18
+    Sino
+        promedioMenor18 = 0
+    FinSi
+    Escribir "Promedio general de las edades: ", promedioGeneral// resultado
+    Escribir "Cantidad de edades mayores o iguales a 18: ", cantMayorIgual18// resultado
+    Escribir "Promedio de edades mayores o iguales a 18: ", promedioMayorIgual18// resultado
+    Escribir "Cantidad de edades menores a 18: ", cantMenor18// resultado
+    Escribir "Promedio de edades menores a 18: ", promedioMenor18// resultado
+FinFuncion// fin
+Funcion EjercicoCA15
+	Escribir "*** Ejercico 15 *** "
+	Definir numero1, numero2, i Como Entero// definir valores
+    Escribir "Ingrese el primer número: "
+    Leer numero1// ingresar valores
+    Escribir "Ingrese el segundo número: "
+    Leer numero2
+    Si numero1 < numero2 Entonces// proseso del Ejercicio
+        Para i = numero1 + 1 Hasta numero2 - 1 Hacer
+            Si i Mod 2 <> 0 Entonces
+                Escribir i // resultado
+            FinSi
+        FinPara
+    Sino
+        Para i = numero2 + 1 Hasta numero1 - 1 Hacer
+            Si i Mod 2 <> 0 Entonces
+                Escribir i// resultado
+            FinSi
+        FinPara
+    FinSi
+FinFuncion// fin
+Funcion EjercicoCA16
+	Escribir "*** Ejercico 16 *** "
+	Definir Sueldos Como Real// definir los valores del Ejercicio
+    Definir i, cantidadSueldos Como Entero
+    Definir sueldoMasAlto, sumaSueldos, promedioGeneral Como Real
+	Dimension Sueldos[100]// Puedes ajustar el tamaño del arreglo según tus necesidades
+    i = 0
+    cantidadSueldos = 0
+    sueldoMasAlto = 0
+    sumaSueldos = 0
+    Escribir "Ingrese los sueldos de los empleados (termine con 0):"
+    Leer Sueldos[i]// ingresar valores
+    Mientras Sueldos[i] <> 0 Hacer// proseso del Ejercicio
+        cantidadSueldos = cantidadSueldos + 1
+        sumaSueldos = sumaSueldos + Sueldos[i]
+        Si Sueldos[i] > sueldoMasAlto Entonces
+            sueldoMasAlto = Sueldos[i]
+        FinSi
+        i = i + 1
+        Leer Sueldos[i]
+    FinMientras
+    Si cantidadSueldos > 0 Entonces
+        promedioGeneral = sumaSueldos / cantidadSueldos
+    Sino
+        promedioGeneral = 0
+    FinSi
+    Escribir "Sueldo más alto: ", sueldoMasAlto// resultado 
+    Escribir "Cantidad de sueldos: ", cantidadSueldos// resultado 
+    Escribir "Promedio de sueldos: ", promedioGeneral// resultado
+FinFuncion
+funcion Operacion_com_Cadenas_y_Arreglo
+	definir n Como Entero
+	Escribir "Ingrese el numero de ejercicio (1-23)"
+	leer n
+	segun n Hacer
+		1:
+			EjercicoCA1
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		2:
+			EjercicoCA2
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		3:
+			EjercicoCA3
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		4:
+			EjercicoCA4
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		5:
+			EjercicoCA5
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		6:	
+			EjercicoCA6
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		7:	
+			EjercicoCA7
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		8:	
+			EjercicoCA8
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		9:	
+			EjercicoCA9
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		10:	
+			EjercicoCA10
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		11:	
+			EjercicoCA11
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		12:	
+			// EjercicoCA12
+			Esperar 3 Segundos
+			Limpiar Pantalla
+			EjercicoCA13
+		13:	
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		14:	
+			EjercicoCA14 
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		15:	
+			EjercicoCA15
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		16:	
+			EjercicoCA16
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		De Otro Modo:
+			Escribir "Ejercico no existente"
+	FinSegun
