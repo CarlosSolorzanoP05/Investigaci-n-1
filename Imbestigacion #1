@@ -1044,6 +1044,147 @@ Funcion EjercicoCA16
     Escribir "Cantidad de sueldos: ", cantidadSueldos// resultado 
     Escribir "Promedio de sueldos: ", promedioGeneral// resultado
 FinFuncion
+funcion EjercicoCA17
+	Definir frase1, frase2 Como Cadena
+    Definir longitud_frase1, longitud_frase2 Como Entero
+	Escribir "*** Ejercico 17 *** "
+    Escribir "Ingrese la primera frase:"
+    Leer frase1
+    Escribir "Ingrese la segunda frase:"
+    Leer frase2
+    longitud_frase1 = Longitud(frase1)
+    longitud_frase2 = Longitud(frase2)
+    Si longitud_frase1 > longitud_frase2 Entonces
+        Escribir "La frase 1 es más larga:", frase1
+    Sino Si longitud_frase2 > longitud_frase1 Entonces
+			Escribir "La frase 2 es más larga:", frase2
+		Sino
+			Escribir "Ambas frases tienen la misma longitud."
+		Fin Si
+	FinSi
+FinFuncion
+funcion EjercicoCA18
+	Definir lado, area Como Real
+	Escribir "*** Ejercico 18 *** "
+    Escribir "Ingrese el valor del lado del cuadrado:"
+    Leer lado
+    area <- lado * lado
+    Escribir "El área del cuadrado con lado ", lado, " es: ", area
+FinFuncion
+funcion EjercicoCA19
+	Definir opcion Como Entero
+    Definir area Como Real
+	Escribir "*** Ejercico 19 *** "
+    Escribir "Seleccione la figura para calcular el área:"
+    Escribir "1. Cuadrado"
+    Escribir "2. Triángulo"
+    Escribir "3. Rectángulo"
+    Leer opcion
+    Segun opcion Hacer
+        Caso 1:
+            Definir ladoCuadrado Como Real
+            Escribir "Ingrese el lado del cuadrado:"
+            Leer ladoCuadrado
+            area <- ladoCuadrado * ladoCuadrado
+        Caso 2:
+            Definir baseTriangulo, alturaTriangulo Como Real
+            Escribir "Ingrese la base del triángulo:"
+            Leer baseTriangulo
+            Escribir "Ingrese la altura del triángulo:"
+            Leer alturaTriangulo
+            area <- (baseTriangulo * alturaTriangulo) / 2
+        Caso 3:
+            Definir baseRectangulo, alturaRectangulo Como Real
+            Escribir "Ingrese la base del rectángulo:"
+            Leer baseRectangulo
+            Escribir "Ingrese la altura del rectángulo:"
+            Leer alturaRectangulo
+            area <- baseRectangulo * alturaRectangulo
+        De Otro Modo:
+            Escribir "Opción no válida."
+    FinSegun
+	
+    Si opcion >= 1 Y opcion <= 3 Entonces
+        Escribir "El área de la figura seleccionada es: ", area
+    FinSi
+FinFuncion
+funcion EjercicoCA20
+	Definir frase Como Cadena
+    Definir cantidadPalabras, i, long Como Entero
+    Definir esPalabra Como Logico
+	Escribir "*** Ejercico 20 *** "
+    Escribir "Ingrese una frase:"
+    Leer frase
+    cantidadPalabras <- 0
+    long <- Longitud(frase)
+    esPalabra <- Falso
+    Para i <- 1 Hasta long Hacer
+        Si SubCadena(frase, i, 1) = " " Entonces
+            Si esPalabra Entonces
+                cantidadPalabras <- cantidadPalabras + 1
+            FinSi
+            esPalabra <- Falso
+        Sino
+            esPalabra <- Verdadero
+        FinSi
+    FinPara
+    Si esPalabra Entonces
+        cantidadPalabras <- cantidadPalabras + 1
+    FinSi
+    Escribir "La frase ingresada tiene ", cantidadPalabras, " palabra(s)."
+FinFuncion
+funcion EjercicoCA21
+	Definir numero1, numero2, suma Como Entero
+	Escribir "*** Ejercico 21 *** "
+    Escribir "Ingrese el primer número:"
+    Leer numero1
+    Escribir "Ingrese el segundo número:"
+    Leer numero2
+    suma <- numero1 + numero2
+    Escribir "La suma de ", numero1, " y ", numero2, " es igual a ", suma
+FinFuncion
+funcion EjercicoCA22
+	Definir numero1, numero2, suma, sumaInversa Como entero
+    Definir esPalindromo Como Logico
+	Escribir "*** Ejercico 22 *** "
+    Escribir "Ingrese el primer número:"
+    Leer numero1
+    Escribir "Ingrese el segundo número:"
+    Leer numero2
+    suma <- numero1 + numero2
+    sumaInversa <- 0
+    esPalindromo <- Falso
+    Definir numeroTemporal Como real
+    numeroTemporal <- suma
+    Mientras numeroTemporal > 0 Hacer
+        sumaInversa <- (sumaInversa * 10) + (numeroTemporal % 10)
+        numeroTemporal <- numeroTemporal / 10
+    FinMientras
+    Si suma = sumaInversa Entonces
+        esPalindromo <- Verdadero
+    FinSi
+    Si esPalindromo Entonces
+        Escribir "La suma de ", numero1, " y ", numero2, " es un número palíndromo."
+    Sino
+        Escribir "La suma de ", numero1, " y ", numero2, " NO es un número palíndromo."
+    FinSi
+FinFuncion
+funcion EjercicoCA23
+	Definir dividendo, divisor, cociente, residuo Como real
+	Escribir "*** Ejercico 23 *** "
+    Escribir "Ingrese el dividendo:"
+    Leer dividendo
+    Escribir "Ingrese el divisor:"
+    Leer divisor
+    Si divisor <> 0 Entonces
+        cociente <- dividendo / divisor
+        residuo <- dividendo % divisor
+        Escribir "El cociente de la división es: ", cociente
+        Escribir "El residuo de la división es: ", residuo
+    Sino
+        Escribir "No se puede dividir por cero. Ingrese un divisor diferente."
+    FinSi
+FinFuncion
 funcion Operacion_com_Cadenas_y_Arreglo
 	definir n Como Entero
 	Escribir "Ingrese el numero de ejercicio (1-23)"
@@ -1111,6 +1252,34 @@ funcion Operacion_com_Cadenas_y_Arreglo
 			Limpiar Pantalla
 		16:	
 			EjercicoCA16
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		17:
+			EjercicoCA17
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		18:	
+			EjercicoCA18
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		19:	
+			EjercicoCA19
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		20:	
+			EjercicoCA20
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		21:	
+			EjercicoCA21
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		22:	
+			// EjercicoCA22
+			Esperar 3 Segundos
+			Limpiar Pantalla
+		23:	
+			EjercicoCA23
 			Esperar 3 Segundos
 			Limpiar Pantalla
 		De Otro Modo:
